@@ -70,9 +70,30 @@ get_header(); ?>
     <div class="wrapper">
         <h2><?php the_field('history_section_title'); ?></h2>
         <?php the_field('history_section_text'); ?>
+        <?php if( have_rows('history_timeline') ) : $count = 0; ?>
+            <div class="timeline-wrapper">
+                <div class="timeline-scroller">
+                    <div class="scroller"></div>
+                </div>
+                <div class="position-details-wrapper">
+                <?php while( have_rows('history_timeline') ) : the_row(); $count++; ?>
+                    <div data-summary="<?php echo "position-summary-{$count}"; ?>" class="position-details<?php echo " position-details-{$count}"; echo $count == 1 ? ' active' : ''; ?>">
+                        <div class="date">
+                            <p class="start-date">Start Date: <?php the_sub_field('date_start'); ?></p>
+                            <p class="end-date"><?php echo get_sub_field('date_end') ? "End Date: " . get_sub_field('date_end') : 'Present'; ?></p>
+                        </div>
+                        <p class="employer">Employer: <?php the_sub_field('employer_name'); ?></p>
+                        <p class="position">Position: <?php the_sub_field('position'); ?></p>
+                    </div>    
+                <?php endwhile; ?>
+            </div>
+            <div class="position-summary-wrapper">
+                <?php $count = 0; while( have_rows('history_timeline') ) : the_row(); $count++; ?>
+                    <div class="position-summary<?php echo " position-summary-{$count}"; echo $count == 1 ? ' active' : ''; ?>"><?php the_sub_field('job_summary'); ?></div>
+                <?php endwhile; ?>
+            </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
-
-<p>test</p>
-
 <?php get_footer(); ?>
