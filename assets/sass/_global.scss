@@ -1,0 +1,108 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.button {
+    background: $white;
+    padding: 10px 30px;
+    text-align: center;
+    color: $blk;
+    border: solid 1px $blk;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-family: $sans-serif;
+    transition: $transition-fast;
+    &:hover {
+        background: $blk;
+        color: $white;
+        border-color: $red;
+    }
+}
+
+.wrapper {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.slick-slider {
+    position: relative;
+    margin-top: 100px;
+    .arrow {
+        position: absolute;
+        top: -60px;
+        right: 0;
+        border: solid 2px $red;
+        background: $white;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: $transition-fast;
+        cursor: pointer;
+        &:hover {
+            // background: $blk;
+            // color: $white;
+        }
+        &-prev, &-next {
+            font-family: $google-icons;
+            font-size: 1.5rem;
+            color: $red;
+        }
+        &-prev {
+            right: 75px;
+            &:before {
+                content: "\e5e0";
+            }
+            
+        }
+        &-next {
+            right: 10px;
+            &:before {
+                content: "\e5e1";
+            }
+        }
+    }
+    .slick-dots {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 5px;
+        position: absolute;
+        right: 10px;
+        top: -30px;
+        li {
+            color: $blk;
+            list-style-type: none;
+            opacity: 0.5;
+            cursor: pointer;
+            button {
+                font-size: 0;
+                border-radius: 50%;
+                width: 15px;
+                height: 15px;
+                background: $blk;
+                color: $blk;
+                border: 0;
+                cursor: pointer;
+            }
+            &.slick-active {
+                opacity: 1;
+                button {
+                    background: $red;
+                }
+            }
+        }
+    }
+}
+
+.bg-black {
+    background: $blk;
+    h1, h2, h3, p {
+        color: $white;
+    }
+}

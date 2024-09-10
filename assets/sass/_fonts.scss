@@ -1,0 +1,60 @@
+html, body {
+    font-size: 10px;
+}
+h2 {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, p, ul, ol, li {
+    color: $white;
+    margin-top: 0;
+}
+
+h1 {
+    font-family: $sans-serif;
+    font-weight: 100;
+    font-size: 4rem;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: $sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
+    margin-bottom: 60px;
+    position: relative;
+    &:after {
+        content: "";
+        height: 5px;
+        width: 175px;
+        background: $red;
+        position: absolute;
+        bottom: -30px;
+        left: 0px;
+    }
+    &:before {
+        content: "";
+        height: 5px;
+        width: 175px;
+        background: $red;
+        position: absolute;
+        bottom: -15px;
+        left: -60px;
+    }
+}
+
+p {
+    font-size: 1.7rem;
+    font-weight: 300;
+    font-family: $sans-serif;
+    margin-bottom: 20px;
+}
+
+a {
+    font-size: 1.7rem;
+    font-weight: 300;
+    font-family: $sans-serif;
+    margin-bottom: 20px;
+    color: $blk;
+}
+
