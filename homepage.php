@@ -73,4 +73,6 @@ get_header(); ?>
     </div>
 </section>
 
+<p>test</p>
+
 <?php get_footer(); ?>
