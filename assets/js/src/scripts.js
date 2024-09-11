@@ -77,7 +77,8 @@ jQuery(document).ready(function ($) {
 				positionDetails.each(function (index, element) {
 					var distanceFromTop = $(element).offset().top - parentContainer.offset().top;
 					var dataSummary = $(element).data('summary');
-                    console.log(distanceFromTop);
+                    var dataYear = $(element).data('year');
+                    console.log(distanceFromTop)
 					if (distanceFromTop < 0) { 
 						$(element).css('opacity', 1 + distanceFromTop / parentContainer.height());
 					} else {
@@ -87,18 +88,24 @@ jQuery(document).ready(function ($) {
 					if (scrollTop > lastScrollTop) {
 					
 						if (distanceFromTop < 0) {
-							$(`.${dataSummary}`).fadeOut();
+                            $(`.${dataSummary}`).fadeOut();
+                            //$(`.${dataYear}`).fadeOut();
 						} else if( distanceFromTop < 100) {
-							$(`.${dataSummary}`).fadeIn();
+							$(`.${dataSummary}`).fadeIn()
+                            $(`.${dataYear}`).fadeIn().css({
+                                'display': 'flex',
+                                'left': '-185px'
+                            });
 						}
 
 					} else {
-						
 						if (distanceFromTop > 30) {
 							$(`.${dataSummary}`).fadeOut();
+							//$(`.${dataYear}`).fadeOut().css('display', 'flex');
 						}
 						else if (distanceFromTop > -50) {
 							$(`.${dataSummary}`).fadeIn();
+							//$(`.${dataYear}`).fadeIn().css('display', 'flex');
 						}
 					}
 				})

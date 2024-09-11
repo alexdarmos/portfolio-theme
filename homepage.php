@@ -70,14 +70,22 @@ get_header(); ?>
     <div class="wrapper">
         <h2><?php the_field('history_section_title'); ?></h2>
         <?php the_field('history_section_text'); ?>
-        <?php if( have_rows('history_timeline') ) : $count = 0; ?>
+        <?php if( have_rows('history_timeline') ) : ?>
             <div class="timeline-wrapper">
                 <div class="timeline-scroller">
                     <div class="scroller"></div>
+                    <?php $count = 0; while( have_rows('history_timeline') ) : the_row(); $count++;?>
+                        <div class="short-year <?php echo "short-year-{$count}"; ?>">
+                            <?php $start_year = substr(get_sub_field('date_start'), -2); 
+                            $end_year = get_sub_field('date_end') ? substr(get_sub_field('date_end') . "'", -3) : 'Now'; 
+                            ?>
+                            <p><?php echo "<span>{$start_year}'</span> <span>-</span> <span>{$end_year}</span>"; ?></p>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
                 <div class="position-details-wrapper">
-                <?php while( have_rows('history_timeline') ) : the_row(); $count++; ?>
-                    <div data-summary="<?php echo "position-summary-{$count}"; ?>" class="position-details<?php echo " position-details-{$count}"; echo $count == 1 ? ' active' : ''; ?>">
+                <?php $count = 0; while( have_rows('history_timeline') ) : the_row(); $count++; ?>
+                    <div data-year="<?php echo "short-year-{$count}"; ?>" data-summary="<?php echo "position-summary-{$count}"; ?>" class="position-details<?php echo " position-details-{$count}"; echo $count == 1 ? ' active' : ''; ?>">
                         <div class="date">
                             <p class="start-date">Start Date: <?php the_sub_field('date_start'); ?></p>
                             <p class="end-date"><?php echo get_sub_field('date_end') ? "End Date: " . get_sub_field('date_end') : 'Present'; ?></p>
