@@ -2,11 +2,22 @@
 $blk: #000;
 $white: #fff;
 $red: #d95457;
+$blue: #6d9eeb;
 $grey: #404040;
+
+// filters
+$filter-red: brightness(0) saturate(74%) invert(40%) sepia(18%) saturate(1773%) hue-rotate(309deg) brightness(94%) contrast(101%);
+$filter-blue: brightness(0) saturate(100%) invert(61%) sepia(91%) saturate(1450%) hue-rotate(189deg) brightness(94%) contrast(96%);
 
 // site fonts
 $sans-serif: "Jost", sans-serif;
 $serif : "Zilla Slab", serif;
+
+// flex & grid gaps
+$gap-100: 100px;
+$gap-50: 50px;
+$gap-20: 20px;
+$gap-0: 0px;
 
 // css icons
 $google-icons : 'Material Symbols Outlined';

@@ -18,7 +18,7 @@ body {
     &:hover {
         background: $blk;
         color: $white;
-        border-color: $red;
+        border-color: $blue;
     }
 }
 
@@ -34,7 +34,7 @@ body {
         position: absolute;
         top: -60px;
         right: 0;
-        border: solid 2px $red;
+        border: solid 2px $blue;
         background: $white;
         width: 50px;
         height: 50px;
@@ -51,7 +51,7 @@ body {
         &-prev, &-next {
             font-family: $google-icons;
             font-size: 1.5rem;
-            color: $red;
+            color: $blue;
         }
         &-prev {
             right: 75px;
@@ -93,7 +93,7 @@ body {
             &.slick-active {
                 opacity: 1;
                 button {
-                    background: $red;
+                    background: $blue;
                 }
             }
         }
@@ -102,7 +102,231 @@ body {
 
 .bg-black {
     background: $blk;
-    h1, h2, h3, p {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    ul,
+    ol,
+    li {
         color: $white;
+    }
+}
+
+.animated-bars-right {
+    .bar {
+        content: "";
+        height: 35px;
+        background: $blue;
+        position: absolute;
+        &-1 {
+            bottom: 250px;
+            right: -100%;
+            width: 30%;
+            transition: $transition-medium;
+        }
+        &-2 {
+            bottom: 305px;
+            right: -100%;
+            width: 40%;
+            transition: $transition-slow;
+        }
+    }
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(109, 158, 235, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(109, 158, 235, 0);
+    }
+}
+
+@keyframes flip-animation {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    20% {
+        transform: rotateY(72deg);
+    }
+
+    40% {
+        transform: rotateY(144deg);
+    }
+
+    60% {
+        transform: rotateY(216deg);
+    }
+
+    90% {
+        transform: rotateY(288deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes rotate-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(72deg);
+    }
+
+    40% {
+        transform: rotate(144deg);
+    }
+
+    60% {
+        transform: rotate(216deg);
+    }
+
+    90% {
+        transform: rotate(288deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-reverse-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-72deg);
+    }
+
+    40% {
+        transform: rotate(-144deg);
+    }
+
+    60% {
+        transform: rotate(-216deg);
+    }
+
+    90% {
+        transform: rotate(-288deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.col {
+    display: flex;
+    gap: $gap-50;
+    &.center {
+        align-items: center;
+        justify-content: center;
+    }
+    &.space-between {
+        justify-content: space-between;
+    }
+    &.flex-row {
+        flex-direction: row;
+    }
+    &.flex-column {
+        flex-direction: column;
+    }
+    .col-25 {
+        width: calc(25% - #{$gap-50});
+    }
+    .col-40 {
+        width: calc(40% - #{$gap-50});
+    }
+    .col-50 {
+        width: calc(50% - #{$gap-50});
+    }
+    .col-60 {
+        width: calc(60% - #{$gap-50});
+    }
+    .col-75 {
+        width: calc(75% - #{$gap-50});
+    }
+    .col-100 {
+        width: calc(100% - #{$gap-50});
+    }
+}
+
+.contact {
+    position: relative;
+    display: block;
+    &:hover {
+        filter: $filter-blue;
+    }
+    &.contact-github {
+        width: 30px;
+        height: 30px;
+        &:after {
+            content: "";
+            background: url('/wp-content/uploads/2024/09/icons-github.svg') no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            color: $blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    &.contact-linkedin {
+        width: 30px;
+        height: 30px;
+        &:after {
+            content: "";
+            background: url('/wp-content/uploads/2024/09/icons-linkedin.svg') no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            font-size: 3rem;
+            color: $blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    &.contact-email {
+        width: 30px;
+        height: 30px;
+        &:after {
+            content: "";
+            background: url('/wp-content/uploads/2024/09/email-svgrepo-com.svg') no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            font-size: 3rem;
+            color: $blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    &.contact-upwork {
+        width: 30px;
+        height: 30px;
+        &:after {
+            content: "";
+            background: url('/wp-content/uploads/2024/09/upwork-svgrepo-com.svg') no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            font-size: 3rem;
+            color: $blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 }

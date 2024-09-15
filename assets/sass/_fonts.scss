@@ -6,7 +6,7 @@ h2 {
 }
 
 h1, h2, h3, h4, h5, p, ul, ol, li {
-    color: $white;
+    color: $blk;
     margin-top: 0;
 }
 
@@ -27,7 +27,7 @@ h2 {
         content: "";
         height: 5px;
         width: 175px;
-        background: $red;
+        background: $blue;
         position: absolute;
         bottom: -30px;
         left: 0px;
@@ -36,11 +36,17 @@ h2 {
         content: "";
         height: 5px;
         width: 175px;
-        background: $red;
+        background: $blue;
         position: absolute;
         bottom: -15px;
         left: -60px;
     }
+}
+
+h3 {
+    font-family: $sans-serif;
+    color: $blue;
+    font-size: 2rem;
 }
 
 p {

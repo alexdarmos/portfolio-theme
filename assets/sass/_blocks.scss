@@ -1,0 +1,89 @@
+.stats-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media screen and (max-width: 1400px) {
+        flex-direction: row;
+        margin-bottom: 30px;
+    }
+    .stat {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            border-left: solid 3px $blue;
+            border-top: solid 3px $blue;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            animation: rotate-animation 10s infinite;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            border-left: solid 3px $blue;
+            border-top: solid 3px $blue;
+            height: 90%;
+            width: 90%;
+            border-radius: 50%;
+            animation: rotate-reverse-animation 10s infinite;
+        }
+        p {
+            &.stat-number {
+                font-size: 2.5rem;
+                text-align: center;
+                margin-bottom: 5px;;
+            }
+            &.stat-description {
+                font-size:1.3rem;
+                max-width: 100px;
+                text-align: center;
+                margin: 0;
+            }
+        }
+    }
+}
+
+#pre-footer {
+    position: relative;
+    margin-top: 160px;
+    padding: 0px 0 20px 0;
+    .col {
+        align-items: center;
+        .col-60 {
+            p {
+                margin-bottom: 60px;
+            }
+            .button-wrapper {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+        .col-40 {
+            position: relative;
+            top: -80px;
+            .img-shadow-wrapper {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                img {
+                    object-fit: contain;
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    z-index: 2;
+                    //box-shadow: 5px -4px 11px 0px #cccccc69;
+                }
+            }
+        }
+    }
+}

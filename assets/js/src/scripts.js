@@ -41,71 +41,49 @@ jQuery(document).ready(function ($) {
         });
     })
 
-    $(document).ready(function () {
+    
         	// Vertical Scroller fade effect
 	$(document).ready(function () {
-		if ($('.timeline-wrapper').length > 0) {
-
+        if ($('.timeline-wrapper').length > 0) {
             var parentContainer = $('.position-details-wrapper');
-            
-            //var lastElement = $('.position-details-3');
-            // Get the height of the bottom element
-            //var lastElementHeight = lastElement.outerHeight();
-            // Scroll to the bottom element
-            //parentContainer.scrollTop(parentContainer.prop('scrollHeight') - lastElementHeight);
-            
-            
-
-
-
-
 			var positionDetails = $('.position-details');
 			var highlightCircle = $('.timeline-scroller .scroller');
-			//var scrollerOffset = $('.highlight-circle').data('offset');
 			var lastScrollTop = 0;
 			
 			parentContainer.on('scroll', function (e) {	
                 var scrollTop = parentContainer.scrollTop();
-				//var highlightScroll = (-scrollerOffset) + ((($('.position-1').offset().top - parentContainer.offset().top) / (parentContainer.offset().top) ) * -100)
+                highlightCircle.css('top', parentContainer.scrollTop() + 'px');
+
 				
-				//if (highlightScroll < 100) {
-					highlightCircle.css('top', parentContainer.scrollTop() + 'px');
-				// } else {
-				// 	highlightCircle.css('top', '100%');
-				// }
-				
-				positionDetails.each(function (index, element) {
+				positionDetails.each( elementFx = (index, element) => {
 					var distanceFromTop = $(element).offset().top - parentContainer.offset().top;
 					var dataSummary = $(element).data('summary');
                     var dataYear = $(element).data('year');
-                    console.log(distanceFromTop)
+
 					if (distanceFromTop < 0) { 
 						$(element).css('opacity', 1 + distanceFromTop / parentContainer.height());
 					} else {
 						$(element).css('opacity', 1 - distanceFromTop / parentContainer.height());
 					}
 
-					if (scrollTop > lastScrollTop) {
-					
+                    if (scrollTop > lastScrollTop) {
+
 						if (distanceFromTop < 0) {
                             $(`.${dataSummary}`).fadeOut();
-                            //$(`.${dataYear}`).fadeOut();
 						} else if( distanceFromTop < 100) {
-							$(`.${dataSummary}`).fadeIn()
+                            $(`.${dataSummary}`).fadeIn()
                             $(`.${dataYear}`).fadeIn().css({
                                 'display': 'flex',
-                                'left': '-185px'
+                                'left': '0'
                             });
 						}
 
-					} else {
+                    } else {
 						if (distanceFromTop > 30) {
 							$(`.${dataSummary}`).fadeOut();
-							//$(`.${dataYear}`).fadeOut().css('display', 'flex');
 						}
 						else if (distanceFromTop > -50) {
 							$(`.${dataSummary}`).fadeIn();
-							//$(`.${dataYear}`).fadeIn().css('display', 'flex');
 						}
 					}
 				})
@@ -114,12 +92,39 @@ jQuery(document).ready(function ($) {
 
 		}		
 
-	});
-    })
+    });
+    
+    // User window position - used to load first short year tab
+    $(document).ready(function () {
+        $(window).on('scroll', () => {
+            var sectionPos = $('#timeline').offset().top - $(window).scrollTop();
+            if (sectionPos < 300) {
+                $(`.short-year-1`).fadeIn().css({
+                    'display': 'flex',
+                    'left': '0'
+                });
+                $('.bar').css('right', '0');
+            }
 
+            (function() {
+                var skillsPos = $('#skills').offset().top - $(window).scrollTop();
+                var $skills = $('.skill');
 
+                //console.log($skills)
 
+                //console.log('container: ' + skillsPos);
+                $skills.each((index, element) => { 
+                    var elementPos = $(element).offset().top - $(window).scrollTop();
+                    console.log('skill-' + index + ': ' + elementPos);
+                    if (elementPos <= 100) {
+                        $(element).find('img').addClass('active');
+                    }
+                })
+            })();
+        })
 
+    });
+    
 
 
 

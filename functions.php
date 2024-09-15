@@ -86,11 +86,11 @@ function portfolio_footer() {
 if( function_exists('acf_add_options_page') ) {
     
     acf_add_options_page(array(
-        'page_title'    => 'Global Settings',
-        'menu_title'    => 'Global Settings',
+        'page_title'    => 'Site Settings',
+        'menu_title'    => 'Site Settings',
         'menu_slug'     => 'customizations',
         'capability'    => 'edit_posts',
-        'icon_url'      => 'dashicons-admin-customizer', // Add this line and replace the second inverted commas with class of the icon you like
+        'icon_url'      => 'dashicons-admin-site', // Add this line and replace the second inverted commas with class of the icon you like
         'redirect'      => false
     ));
 }
