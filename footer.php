@@ -20,7 +20,7 @@ $signature = get_field('site_tag', 'option');
             <?php 
             
             if( $email ) {
-                echo '<a title="email me" href="mailto:' . $email . '" class="contact contact-email"></a>';
+                echo '<a target="_blank" title="email me" href="mailto:' . $email . '" class="contact contact-email"></a>';
             } 
 
             if( $phone ) {

@@ -1,5 +1,6 @@
 .stats-wrapper {
-    display: flex;
+    // display: flex;
+    display: none;
     flex-direction: column;
     gap: 30px;
     @media screen and (max-width: 1400px) {
@@ -15,37 +16,53 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        &:before {
-            content: "";
+        .moving-border {
+            background: $blk;
             position: absolute;
-            border-left: solid 3px $blue;
-            border-top: solid 3px $blue;
             height: 100%;
             width: 100%;
             border-radius: 50%;
-            animation: rotate-animation 10s infinite;
+            top: 0;
+            left: 0;
         }
-        &:after {
+        &:before {
             content: "";
             position: absolute;
-            border-left: solid 3px $blue;
-            border-top: solid 3px $blue;
-            height: 90%;
-            width: 90%;
+            // border-left: solid 3px $blue;
+            // border-top: solid 3px $blue;
+            height: 100%;
+            width: 100%;
             border-radius: 50%;
-            animation: rotate-reverse-animation 10s infinite;
+            background: linear-gradient(0deg, rgba(109, 158, 235, 1) 50%, rgba(0, 0, 0, 1) 50%);
+            padding: 3px;
+            //animation: rotate-animation 1s infinite;
         }
+        // &:after {
+        //     content: "";
+        //     position: absolute;
+        //     // border-left: solid 3px $blue;
+        //     // border-top: solid 3px $blue;
+        //     height: 105%;
+        //     width: 105%;
+        //     border-radius: 50%;
+        //     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, rgba(109, 158, 235, 1) 50%);
+        //     // animation: rotate-reverse-animation 10s infinite;
+        // }
         p {
             &.stat-number {
                 font-size: 2.5rem;
                 text-align: center;
-                margin-bottom: 5px;;
+                margin-bottom: 5px;
+                position: relative;
+                z-index: 2;
             }
             &.stat-description {
                 font-size:1.3rem;
                 max-width: 100px;
                 text-align: center;
                 margin: 0;
+                position: relative;
+                z-index: 2;
             }
         }
     }
@@ -55,11 +72,43 @@
     position: relative;
     margin-top: 160px;
     padding: 0px 0 20px 0;
+    @media screen and (max-width: 1024px) {
+        height: 300px;
+    }
+    .wrapper {
+        @media screen and (max-width: 1024px) {
+            height: 100%;
+        }
+    }
     .col {
         align-items: center;
+        @media screen and (max-width: 1024px) {
+            flex-direction: column-reverse;
+            height: 100%;
+        }
         .col-60 {
+            @media screen and (max-width: 1024px) {
+                margin: 0;
+                height: 100%;
+                width: 100%;
+                position: relative;
+                z-index: 3;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+            }
+            @media screen and (max-width: 660px) {
+                p, .button-wrapper {
+                    padding: 0 30px;
+                }
+            }
             p {
                 margin-bottom: 60px;
+                @media screen and (max-width: 1024px) {
+                    margin-bottom: 30px;
+                }
             }
             .button-wrapper {
                 display: flex;
@@ -71,17 +120,45 @@
         .col-40 {
             position: relative;
             top: -80px;
+            @media screen and (max-width: 1200px) {
+                overflow-x: hidden;
+                right: -8vw;
+                width: 50%;
+            }
+            @media screen and (max-width: 1024px) {
+                width: calc(100% + 20vw);
+                height: 100%;
+                right: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: $blk;
+                    opacity: 0.8;
+                    z-index: 2;
+                }
+            }
             .img-shadow-wrapper {
                 position: relative;
-                height: 100%;
-                width: 100%;
+                height: 550px;
+                width: 450px;
+                @media screen and (max-width: 1200px) {
+                    width: -webkit-fill-available;
+                    width: fill-available;
+                    width: -moz-fill-available;
+                }
                 img {
-                    object-fit: contain;
-                    height: 100%;
-                    width: 100%;
+                    object-fit: cover;
+                    height: inherit;
+                    width: inherit;
                     position: relative;
                     z-index: 2;
-                    //box-shadow: 5px -4px 11px 0px #cccccc69;
                 }
             }
         }

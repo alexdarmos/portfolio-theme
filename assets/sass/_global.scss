@@ -25,6 +25,9 @@ body {
 .wrapper {
     max-width: 80%;
     margin: 0 auto;
+    @media screen and (max-width: 660px) {
+        max-width: 100%;
+    }
 }
 
 .slick-slider {
@@ -116,19 +119,22 @@ body {
 }
 
 .animated-bars-right {
+    @media screen and (max-width: 1200px) {
+        display: none;
+    }
     .bar {
         content: "";
         height: 35px;
         background: $blue;
         position: absolute;
         &-1 {
-            bottom: 250px;
+            bottom: 150px;
             right: -100%;
             width: 30%;
             transition: $transition-medium;
         }
         &-2 {
-            bottom: 305px;
+            bottom: 205px;
             right: -100%;
             width: 40%;
             transition: $transition-slow;
@@ -328,5 +334,24 @@ body {
             top: 0;
             left: 0;
         }
+    }
+}
+
+.spacer {
+    width: auto;
+    &-10 {
+        height: 10px;
+    }
+    &-20 {
+        height: 20px;
+    }
+    &-30 {
+        height: 30px;
+    }
+    &-40 {
+        height: 40px;
+    }
+    &-50 {
+        height: 50px;
     }
 }

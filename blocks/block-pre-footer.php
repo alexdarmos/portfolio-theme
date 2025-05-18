@@ -13,7 +13,7 @@ if( $block_data ) : ?>
                 if( $buttons_arr ) {
                     echo '<div class="button-wrapper">';
                     foreach( $buttons_arr as $button ) {
-                        echo '<a href="' . $button['button_title_link']['url'] . '" class="button">' . $button['button_title_link']['title'] . '</a>';
+                        echo '<a target="' . $button['button_title_link']['target'] . '" href="' . $button['button_title_link']['url'] . '" class="button">' . $button['button_title_link']['title'] . '</a>';
                     }
                     echo '</div>';
                 }

@@ -6,6 +6,7 @@ if( $stats_arr ) : ?>
             <div class="stat">
                 <p class="stat-number"><?php echo $stat['number']; ?>+</p>
                 <p class="stat-description"><?php echo $stat['text']; ?></p>
+                <div class="moving-border"></div>
             </div>
         <?php endforeach; ?>
     </div>

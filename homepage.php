@@ -12,7 +12,8 @@ get_header(); ?>
     </div>
     <div class="copy-wrapper">
         <div class="col flex-row space-between">
-            <div class="col-60">
+            <!-- <div class="col-60"> -->
+            <div class="col-100">
             <h1><?php the_field('banner_title'); ?></h1>
             <p class="typed-text"><?php the_field('intro_for_animated_text'); ?> 
             <?php if( have_rows('banner_type_animated_text') ) : ?>
@@ -25,7 +26,7 @@ get_header(); ?>
                 <?php if( have_rows('banner_buttons') ) : ?>
                     <div class="button-wrapper">
                         <?php while( have_rows('banner_buttons') ) : the_row(); $button = get_sub_field('button_title_link'); ?>
-                            <a href="<?php echo $button['url'] ?>" class="button">
+                            <a target="<?php echo $button['target']; ?>" href="<?php echo $button['url'] ?>" class="button">
                                 <?php echo $button['title']; ?>
                             </a>
                         <?php endwhile; ?>
@@ -36,9 +37,9 @@ get_header(); ?>
             <?php endif; ?>
             </p>
             </div>
-            <div class="col-40">
+            <!-- <div class="col-40">
                 <?php get_template_part( 'blocks/block', 'stat-bubbles', [ 'data' => [ get_field('banner_stat_highlights') ]] ); ?>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -107,12 +108,15 @@ get_header(); ?>
                         </div>
                         <p class="employer">Employer: <?php the_sub_field('employer_name'); ?></p>
                         <p class="position">Position: <?php the_sub_field('position'); ?></p>
+                        <a data-lity class="mobile-details-btn" href="#job-details-<?php echo $count; ?>">
+                            <p>View Job Details</p>
+                        </a>
                     </div>    
                 <?php endwhile; ?>
             </div>
             <div class="position-summary-wrapper">
                 <?php $count = 0; while( have_rows('history_timeline') ) : the_row(); $count++; ?>
-                    <div class="position-summary<?php echo " position-summary-{$count}"; echo $count == 1 ? ' active' : ''; ?>"><?php the_sub_field('job_summary'); ?></div>
+                    <div id="job-details-<?php echo $count; ?>" class="position-summary<?php echo " position-summary-{$count}"; echo $count == 1 ? ' active' : ''; ?>"><?php the_sub_field('job_summary'); ?></div>
                 <?php endwhile; ?>
             </div>
             </div>
@@ -126,27 +130,30 @@ get_header(); ?>
 
 <section id="skills">
     <div class="wrapper">
-        <h2><?php the_field('technical_section_title'); ?></h2>
-
         <div class="col flex-row space-between">
-            <div class="col-75">
-                <?php if( have_rows('technical_skill_list') ) : $count = 0; ?>
+            <div class="col-60 terminal">
+                <?php //if( have_rows('technical_skill_list') ) : $count = 0; ?>
+                    <h2><pre><?php the_field('technical_section_title'); ?></pre></h2>
                     <div class="technical-skills-wrapper">
-                        <?php while( have_rows('technical_skill_list') ) : the_row(); 
-                        $count++;
-                        $title = get_sub_field('title'); 
-                        $icon = get_sub_field('icon');?>
-                        <div class="skill <?php echo "skill-{$count}"; ?>">
-                            <h3><?php echo $title; ?></h3>
-                            <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
-                        </div>
-                        <?php endwhile; ?>
+                        <ul class="dev-skills">
+                            <?php 
+                            //while( have_rows('technical_skill_list') ) : the_row(); 
+                            for($count = 1; $count < 11; $count++) :
+                            //$count++;
+                            $title = get_sub_field('title'); ?>
+                            <!-- <li><?php echo $title; ?></li> -->
+                            <!-- <span class="console-text" data-text="<?php echo $title; ?>"></span> -->
+                            <p class="typed-text typed-text-<?php echo $count; ?>">
+                                <span class="user-text"></span>
+                                <span class="visible-console-text"></span>
+                            </p>
+                            <?php endfor; //endwhile; ?>
+                        </ul>
                     </div>
-                <?php endif; ?>
-                <?php the_field('soft_skills_accreditations'); ?>
+                <?php //endif; ?>
             </div>
-
-            <div class="col-25">
+            
+            <div class="col-40">
                 <h2><?php the_field('education_sidebar_title'); ?></h2>
                 <?php if( have_rows('education') ) : ?>
                     <div class="education-wrapper">
@@ -160,10 +167,18 @@ get_header(); ?>
                     </div>
                 <?php endif; ?>
             </div>
+            
         </div>
+            
+        <div class="spacer-50"></div>
+        <div class="col-100">
+            <?php the_field('soft_skills_accreditations'); ?>
+        </div>
+        </div>        
     </div>
 </section>
 
 <?php get_template_part('blocks/block', 'pre-footer', [ 'data' => [ get_field('pre_footer_block')] ]); ?>
 
 <?php get_footer(); ?>
+

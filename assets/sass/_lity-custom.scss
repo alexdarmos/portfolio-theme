@@ -1,0 +1,12 @@
+.lity-content {
+    padding: 50px 10%;
+    background: $blk;
+    max-width: 100%;
+    margin: 0 auto;
+    .position-summary {
+        display: block;
+        p, li, a {
+            color: $white;
+        }
+    }
+}

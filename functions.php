@@ -36,16 +36,28 @@ function portfolio_notice_dismissed() {
 // enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'portfolio_enqueue' );
 function portfolio_enqueue() {
+
+    // theme styles
     wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/assets/css/styles.css'); 
 
+    // lity styles
+    wp_enqueue_style( 'lity-styles', get_stylesheet_directory_uri() . '/assets/css/lity.min.css'); 
+
+    // theme js
     wp_register_script('scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.min.js',array('jquery'), null, true); 
     wp_enqueue_script('scripts');
 
+    // type
     wp_register_script('typed-script', get_stylesheet_directory_uri() . '/assets/js/typed-umd.min.js',array('jquery'), null, true); 
     wp_enqueue_script('typed-script');
     
+    // slick
     wp_register_script('slick-script', get_stylesheet_directory_uri() . '/assets/js/slick.min.js',array('jquery'), null, true); 
     wp_enqueue_script('slick-script');
+
+    // lity
+    wp_register_script('lity-script', get_stylesheet_directory_uri() . '/assets/js/lity.min.js',array('jquery'), null, true); 
+    wp_enqueue_script('lity-script');
 }
 
 add_action( 'wp_footer', 'portfolio_footer' );
